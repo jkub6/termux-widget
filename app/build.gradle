@@ -8,7 +8,7 @@ android {
     def apkVersionTag = System.getenv("TERMUX_WIDGET_APP__BUILD__APK_VERSION_TAG") ?: ""
 
     defaultConfig {
-        applicationId "com.termux.widget"
+        applicationId "com.termux.nix.widget"
         minSdk project.properties.minSdkVersion.toInteger()
         targetSdk project.properties.targetSdkVersion.toInteger()
         versionCode 1001
@@ -17,9 +17,9 @@ android {
         if (appVersionName) versionName = appVersionName
         validateVersionName(versionName)
 
-        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.termux"
-        manifestPlaceholders.TERMUX_APP_NAME = "Termux"
-        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "Termux:Widget"
+        manifestPlaceholders.TERMUX_PACKAGE_NAME = "com.termux.nix"
+        manifestPlaceholders.TERMUX_APP_NAME = "Nix"
+        manifestPlaceholders.TERMUX_WIDGET_APP_NAME = "Nix:Widget"
     }
 
     signingConfigs {
@@ -75,7 +75,7 @@ dependencies {
     implementation "com.google.android.material:material:1.12.0"
     implementation "com.google.guava:guava:24.1-jre"
 
-    implementation 'com.termux.termux-app:termux-shared:8aca6dbbf4'
+    implementation project(':termux-shared')
     // Use if below libraries are published locally by termux-app with `./gradlew publishReleasePublicationToMavenLocal` and used with `mavenLocal()`.
     // If updates are done, republish there and sync project with gradle files here
     // https://github.com/termux/termux-app/wiki/Termux-Libraries

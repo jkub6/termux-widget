@@ -1,1 +1,10 @@
 include ':app'
+
+include ':termux-shared'
+project(':termux-shared').projectDir = new File(settingsDir, '../nix-on-droid-app/termux-shared')
+
+include ':terminal-emulator'
+project(':terminal-emulator').projectDir = new File(settingsDir, '../nix-on-droid-app/terminal-emulator')
+
+include ':terminal-view'
+project(':terminal-view').projectDir = new File(settingsDir, '../nix-on-droid-app/terminal-view')
